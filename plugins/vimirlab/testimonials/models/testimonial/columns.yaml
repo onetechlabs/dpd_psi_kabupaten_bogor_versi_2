@@ -1,0 +1,17 @@
+columns:
+    id:
+        label: ID
+        searchable: true
+        invisible: true
+    name:
+        label: Title
+        searchable: true
+        sortable: true
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    is_active:
+        label: Validate
+        type: switch

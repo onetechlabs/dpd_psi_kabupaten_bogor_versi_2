@@ -1,0 +1,48 @@
+==
+<?php
+use Onetechlabs\Contact\Models\Contact;
+use Onetechlabs\Purchaseinformation\Models\Purchaseinformation;
+function onStart()
+{
+    $contact = Contact::find(1);
+    $ptn = "/^0/";
+    $str = $contact['phone'];
+    $rpltxt = "62";
+    $rpltxt2 = "+62 ";
+    $this['Contact'] = $contact;
+    $this['ContactDisplay'] = preg_replace($ptn, $rpltxt2, $str);
+}
+?>
+==
+<div class="main-footer">
+    <div class="row" style="margin-top:30px;">
+        <div class="col-md-3" style="border-right: 3px solid #bf0e0e;">
+            <div class="more-info">
+                <h4 class="footer-title">Media Sosial</h4><hr style="border-top: 1px solid #bf0e0e;">
+                <ul>
+                    {% if Contact.facebook_link != "" %}
+                      <li><i class="fa fa-facebook"></i><a href="{{Contact.facebook_link}}">Kunjungi FB</a></li>
+                    {% endif %}
+                    {% if Contact.twitter_link != "" %}
+                      <li><i class="fa fa-twitter"></i><a href="{{Contact.twitter_link}}">Kunjungi Twitter</a></li>
+                    {% endif %}
+                    {% if Contact.instagram_link != "" %}
+                      <li><i class="fa fa-instagram"></i><a href="{{Contact.instagram_link}}">Kunjungi IG</a></li>
+                    {% endif %}
+                    {% if Contact.facebook_link != "" %}
+                    {% elseif Contact.twitter_link != "" %}
+                    {% elseif Contact.instagram_link != "" %}
+                    {% else %}
+                      Mohon Seluruh Sosial Media Kami sedang dalam Perbaikan.
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="about">
+                <h4 class="footer-title">Apa itu PSI ?</h4><hr style="border-top: 1px solid #bf0e0e;">
+                <p><b>Partai Solidaritas Indonesia</b> adalah kekuatan politik baru yang ingin mengembalikan politik ke tempat yang terhormat. PSI lahir dari kesadaran bahwa politik adalah sebuah tugas mulia untuk mewujudkan kebahagiaan bagi semua orang. Atas dasar itulah kami bertekad mengakhiri sengkarut politik hari ini dengan mengembalikan politik kepada nilainya yang luhur. Kami ingin mendekatkan kembali politik dengan nilai-nilai kebajikan agar lahir NEGARAWAN yang seluruh pikiran dan tindakannya didasarkan atas kepentingan yang lebih besar untuk bangsa dan negara Indonesia, bukan sekadar kepentingan pribadi politik jangka pendek.<br><br><b>Tunjukkan Solidaritasmu!</b></p>
+            </div>
+        </div>
+    </div>
+</div>
